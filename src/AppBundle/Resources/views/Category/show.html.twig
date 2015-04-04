@@ -1,0 +1,31 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Hey{% endblock %}
+
+{% block content %}
+
+    <section class="row">
+        <h1>Articles list in the {{ category.name }} category </h1>
+        {% for article in articles %}
+            {% if article.enabled == true %}
+                <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 cadre">
+                    <header>
+                        <figure class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            <a href="{{ url('article_show', {'id': article.id}) }}"><img class="post_thumbnail" src="{{  article.postThumbnail }}" height="150" width="100%" alt="picture"  title="{{ article.title }}"></a>
+
+                        </figure>
+                    </header>
+                    <h1 class="text-center"><a href="{{ url('article_show', {'id': article.id}) }}">{{ article.title }}</a></h1>
+                    <p class="text-center">{{ article.content | truncate(100) }}</p>
+                    <footer>
+                        <p class="text-center">Released on {{ article.createdAt|date }} </p>
+                    </footer>
+
+                </article>
+            {% else %}
+
+            {% endif %}
+        {% endfor %}
+    </section>
+
+{% endblock %}

@@ -6,7 +6,10 @@
 
     <!-- Latest compiled and minified JavaScript -->
 
-    <title>{% block title %} EasySymfonyBlog {% endblock %} </title>
+    <title>{% block title %} Super manga blog {% endblock %} </title>
+
+
+
     {% block stylesheets %}
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
@@ -14,10 +17,33 @@
         <!-- Optional theme -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
     {% endblock %}
+    {% stylesheets '@AppBundle/Resources/public/css/*' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
 </head>
 <body>
     <header>
-        <h1>EZSYMF2</h1>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Super manga blog</a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="#">Home</a></li>
+                        <li><a href="{{ url('article') }}">All anime!</a></li>
+                        <li><a href="{{ url('category') }}">Our categories</a></li>
+                        <li><a href="{{ url('contact') }}">Contact us</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div><!--/.container-fluid -->
+        </nav>
     </header>
         <div class="container">
         {% block content %}

@@ -10,7 +10,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 class ArticleController extends Controller
 {
     /**
-     * @Route("/article")
+     * @Route("/article", name="article")
      * @Template()
      */
     public function indexAction()
@@ -18,6 +18,7 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $articles = $em->getRepository('AppBundle:Article')->findAll();
+
 
         return $this->render('AppBundle:Article:index.html.twig', [
             'articles' => $articles,
@@ -27,7 +28,7 @@ class ArticleController extends Controller
     /**
      * Finds and displays a Episode entity.
      *
-     * @Route("articles/{id}", name="article_show")
+     * @Route("article/{id}", name="article_show")
      * @Method("GET")
      */
     public function showAction($id)
@@ -35,6 +36,10 @@ class ArticleController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $article = $em->getRepository('AppBundle:Article')->find($id);
+
+
+         $category = $article->getCategory();
+         $tags = $article->getTags();
 
         if (!$article) {
             throw $this->createNotFoundException('Unable to find Episode entity.');
@@ -44,8 +49,11 @@ class ArticleController extends Controller
 
         return $this->render('AppBundle:Article:show.html.twig', [
             'article' => $article,
-
+            'category' => $category,
+            'tags' => $tags,
         ]);
     }
+
+
 
 }

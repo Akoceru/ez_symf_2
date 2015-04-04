@@ -21,6 +21,7 @@ class ArticleAdmin extends Admin
             ->add("user")
             ->add("category")
             ->add("tags")
+            ->add("post_thumbnail")
             ->add('enabled', null,
                 [
                     "required" => false
@@ -50,6 +51,7 @@ class ArticleAdmin extends Admin
             ->add("user")
             ->add("category")
             ->add("tags")
+            ->add("post_thumbnail")
             ->add("enabled")
             ->add("createdAt")
             ->add('_action', 'actions', [

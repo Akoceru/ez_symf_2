@@ -1,7 +1,16 @@
-{% extends "::base.html.twig" %}
+{% extends "::layout.html.twig" %}
 
-{% block title %}AppBundle:Tag:index{% endblock %}
+{% block title %}Hey{% endblock %}
 
-{% block body %}
-<h1>Welcome to the Tag:index page</h1>
+{% block content %}
+
+    <section class="row">
+        <h1>Category list </h1>
+        {% for tag in tags %}
+
+            <h2 class="text-center"><a href="{{ url('tag_show', {'id': tag.id}) }}"> {{ tag.name }}</a></h2>
+
+        {% endfor %}
+    </section>
+
 {% endblock %}

@@ -1,19 +1,24 @@
 {% extends '::layout.html.twig' %}
 
 {% block content %}
-    <h1>Lol</h1>
+    <h1 class="text-center">{{ article.title }}</h1>
 
     <article class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
         <header>
-            <figure>
-                <img class="img-responsive" src="{{ article.post_thumbnail|default(asset('/bundles/app/img/series-default.jpg')) }}" alt="picture" width="263" height="389" title="{{ article.title }}">
+            <figure class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+                <img class="img-responsive" src="{{ article.postThumbnail }}" alt="picture" width="100%" height="250" title="{{ article.title }}">
 
             </figure>
         </header>
-        <h1>{{ article.title }}</h1>
+
         <p>{{ article.content }}</p>
         <footer>
-            <p>Released on {{ article.createdAt|date }}</p>
+            <p>Released on {{ article.createdAt|date }} in <a href="{{ url('category_show', {'id': category.id}) }}"> {{ category.name }} </a> category</p>
+            <p>Tags:
+            {% for tag in tags %}
+                {{ tag.name }},
+            {% endfor %}
+            </p>
         </footer>
 
     </article>

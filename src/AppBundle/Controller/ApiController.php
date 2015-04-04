@@ -34,6 +34,7 @@ class ApiController extends Controller
         $repo = $em->getRepository('AppBundle:Article');
         $articles = $repo->findApi($id);
 
+        var_dump($articles);die;
 
         return new JsonResponse($articles);
 
