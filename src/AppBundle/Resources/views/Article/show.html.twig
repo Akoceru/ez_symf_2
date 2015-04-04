@@ -1,0 +1,21 @@
+{% extends '::layout.html.twig' %}
+
+{% block content %}
+    <h1>Lol</h1>
+
+    <article class="col-xs-12 col-sm-6 col-md-12 col-lg-12">
+        <header>
+            <figure>
+                <img class="img-responsive" src="{{ article.post_thumbnail|default(asset('/bundles/app/img/series-default.jpg')) }}" alt="picture" width="263" height="389" title="{{ article.title }}">
+
+            </figure>
+        </header>
+        <h1>{{ article.title }}</h1>
+        <p>{{ article.content }}</p>
+        <footer>
+            <p>Released on {{ article.createdAt|date }}</p>
+        </footer>
+
+    </article>
+
+{% endblock %}

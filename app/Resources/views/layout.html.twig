@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <!-- Latest compiled and minified JavaScript -->
+
+    <title>{% block title %} EasySymfonyBlog {% endblock %} </title>
+    {% block stylesheets %}
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
+    {% endblock %}
+</head>
+<body>
+    <header>
+        <h1>EZSYMF2</h1>
+    </header>
+        <div class="container">
+        {% block content %}
+        {% endblock %}
+
+            <footer>
+                <p class="text-center">License MIT :)</p>
+            </footer>
+
+    {% block javascripts %}
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+            <script>
+            //Haut, haut, bas, bas, gauche, droite, gauche, droite, B, A
+            var k = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65],
+            n = 0;
+            $(document).keydown(function (e) {
+            if (e.keyCode === k[n++]) {
+            if (n === k.length) {
+            
+            window.location.href = "http://forumjunk.0x1a4.com/pirate.swf";
+            return !1
+            }
+            } else k = 0
+            });
+            </script>
+        </div>
+    {% endblock %}
+</body>
+</html>

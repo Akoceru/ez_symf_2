@@ -1,0 +1,30 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}Hey{% endblock %}
+
+{% block content %}
+
+    <section class="row">
+        <h1>Articles list </h1>
+        {% for article in articles %}
+            {% if article.enabled == true %}
+            <article class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <header>
+                    <figure>
+                        <img class="img-responsive" src="{{ article.post_thumbnail|default(asset('/bundles/app/img/series-default.jpg')) }}" alt="picture" width="263" height="389" title="{{ article.title }}">
+
+                    </figure>
+                </header>
+                <h1>{{ article.title }}</h1>
+                <footer>
+                    <p>Released on {{ article.createdAt|date }}</p>
+                </footer>
+
+            </article>
+        {% else %}
+
+        {% endif %}
+        {% endfor %}
+    </section>
+
+{% endblock %}
